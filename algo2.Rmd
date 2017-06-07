@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+install.packages("bnlearn")
+install.packages("foreach")
+install.packages("parallel")
+install.packages("doParallel")
+```
+
+```{r}
+library(bnlearn)
+library(foreach)
+library(parallel)
+library(doParallel)
+```
+
+```{r}
+mydata <- read.csv("dataset.csv")
+
+df <- mydata
+```
+

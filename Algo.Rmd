@@ -8,8 +8,8 @@ output: html_notebook
 ```{r}
 DS = read.csv("dataset.csv")
 
-trainingset = DS[1:1800,]
-testingset = DS[1801:2500,]
+trainingset = DS[1:2000,]
+testingset = DS[2001:2500,]
 
 if(nrow(trainingset) + nrow(testingset) != nrow(DS)){
   print("There was an error while dividing dataset")
@@ -41,7 +41,7 @@ NNresults = compute(net , testSet_Features );
 
 finalOutput = data.frame(Actual = testingset$Default,
                           Prediction = NNresults$net.result,
-                          Matches = doesPredictionMatch( testingset$Default, NNresults$net.result, 0.3));
+                          Matches = doesPredictionMatch( testingset$Default, NNresults$net.result, 0.6));
 
 row.names(finalOutput) = NULL;
 
