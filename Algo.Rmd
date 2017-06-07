@@ -2,6 +2,9 @@
 title: "R Notebook"
 output: html_notebook
 ---
+
+
+#Feedforward Algorithm
 ```{r}
 DS = read.csv("dataset.csv")
 
