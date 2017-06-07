@@ -2,12 +2,44 @@
 title: "R Notebook"
 output: html_notebook
 ---
+```{r}
+DS = read.csv("dataset.csv")
+
+trainingset = DS[1:1800,]
+testingset = DS[1801:2500,]
+
+if(nrow(trainingset) + nrow(testingset) != nrow(DS)){
+  print("There was an error while dividing dataset")
+  stop();
+}
+str(DS)
+```
+
+```{r}
+library(neuralnet)
+
+model <- model.matrix(~ Default + Income + LoanBalance + MortgageType + Age + MortgageYears + InterestRate + LoanToValue + CreditRating, data = DS )
+
+```
+
+```{r}
+net <- neuralnet(Default ~ Income + MortgageType + Age + MortgageYears + InterestRate + LoanToValue + CreditRating, data = model, hidden = 4, linear.output = F, lifesign = "minimal", threshold = 0.1)
+
+plot(net)
+```
 
 
 ```{r}
 dataset = read.csv("dataset.csv")
 
-head(dataset)
+#head(dataset)
+str(dataset)
+
+
+
+m <- model.matrix(~Income + LoanBalance + Age + InterestType + MortgageType + InterestIncome + MortgageYears + AnnualPayment + CreditRating + LoanToValue + Default, data = dataset)
+
+#head(m)
 ```
 
 ```{r}
