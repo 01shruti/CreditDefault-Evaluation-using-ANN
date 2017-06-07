@@ -6,32 +6,39 @@ output: html_notebook
 
 #Feedforward Algorithm
 ```{r}
-DS = read.csv("dataset.csv")
+#DS = read.csv("dataset.csv")
+DS = read.csv("ds.csv")
 
 trainingset = DS[1:2000,]
 testingset = DS[2001:2500,]
 
-if(nrow(trainingset) + nrow(testingset) != nrow(DS)){
-  print("There was an error while dividing dataset")
-  stop();
-}
+#if(nrow(trainingset) + nrow(testingset) != nrow(DS)){
+#  print("There was an error while dividing dataset")
+#  stop();
+#}
 str(DS)
 ```
 
 ```{r}
 library(neuralnet)
 
-model <- model.matrix(~ Default + Income + LoanBalance + MortgageType + Age + MortgageYears + InterestRate + LoanToValue + CreditRating, data = DS )
+#model <- model.matrix(~ Default + Income + LoanBalance + MortgageType + Age + #MortgageYears + InterestRate + LoanToValue + CreditRating, data = DS )
+
+model <- model.matrix(~ loan_status + loan_amnt + funded_amnt + term + annual_inc, data = DS )
 
 ```
 
 ```{r}
-net <- neuralnet(Default ~ Income + MortgageType + Age + MortgageYears + InterestRate + LoanToValue + CreditRating, data = model, hidden = 4, linear.output = F, lifesign = "minimal", threshold = 0.1)
+#net <- neuralnet(Default ~ Income + MortgageType + Age + MortgageYears + InterestRate + LoanToValue + CreditRating, data = model, hidden = 4, linear.output = F, lifesign = "minimal", threshold = 0.1)
+
+net <- neuralnet(loan_status ~ loan_amnt + funded_amnt + term + annual_inc, data = model, hidden = 4, linear.output = F, lifesign = "minimal", threshold = 0.1)
 
 plot(net)
 ```
 ```{r}
-testSet_Features = subset(testingset,select=c("Income", "MortgageType", "Age", "MortgageYears", "InterestRate", "LoanToValue", "CreditRating"));
+#testSet_Features = subset(testingset,select=c("Income", "MortgageType", "Age", "MortgageYears", "InterestRate", "LoanToValue", "CreditRating"));
+
+testSet_Features = subset(testingset,select=c("loan_amnt", "funded_amnt", "term", "annual_inc"));
 
 head(testSet_Features)
 ```
@@ -41,7 +48,7 @@ NNresults = compute(net , testSet_Features );
 
 finalOutput = data.frame(Actual = testingset$Default,
                           Prediction = NNresults$net.result,
-                          Matches = doesPredictionMatch( testingset$Default, NNresults$net.result, 0.6));
+                          Matches = doesPredictionMatch( testingset$Default, NNresults$net.result, 0.3));
 
 row.names(finalOutput) = NULL;
 
@@ -85,7 +92,9 @@ countSuccessPercent = function(input = NULL){
 
 
 ```{r}
-sol <- data.frame(actual = testingset$Default, prediction = NNresults$net.result)
+#sol <- data.frame(actual = testingset$Default, prediction = NNresults$net.result)
+
+sol <- data.frame(actual = testingset$loan_status, prediction = NNresults$net.result)
 sol[]
 ```
 
