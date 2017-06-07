@@ -27,67 +27,26 @@ net <- neuralnet(Default ~ Income + MortgageType + Age + MortgageYears + Interes
 
 plot(net)
 ```
-
-
 ```{r}
-dataset = read.csv("dataset.csv")
-
-#head(dataset)
-str(dataset)
-
-
-
-m <- model.matrix(~Income + LoanBalance + Age + InterestType + MortgageType + InterestIncome + MortgageYears + AnnualPayment + CreditRating + LoanToValue + Default, data = dataset)
-
-#head(m)
+testSet_Features = subset(testingset,select=c("Income", "MortgageType", "Age", "MortgageYears", "InterestRate", "LoanToValue", "CreditRating"));
 ```
 
 ```{r}
-numTrain = 0.6 *nrow(dataset)
-trainset = dataset[1:numTrain,]
-testset = dataset[(numTrain+1):nrow(dataset),]
+NNresults = compute(net , testSet_Features );
 
-if(nrow(trainset) + nrow(testset) != nrow(dataset)){
-  print("There was an error while dividing dataset")
-  stop();
-}
-```
-
-```{r}
-library(neuralnet)
-NNet = neuralnet(Default~ LoanBalance + Age, trainset, hidden = 4, linear.output = F,lifesign = "minimal", threshold = 0.1)
-
-plot(NNet)
-```
-
-```{r}
-run = function(percentTrain = 0.5, roundOff = T, outputClosenessThreshold = 0.3, HLNodes = 4) {
-                                                  }
-  
-   NNet =  neuralnet(default~ LoanToValue + Age + Income + LoanBalance +                                  InterestRate + MortgageYears+ PropertyValue + AnnualPayment
-                     + CreditRating, trainSet, 
-                     hidden = HLNodes ,linear.output=F,
-                     lifesign="minimal",threshold = 0.1);
-   plot(NNet);
-   
-   testSet_Features =   subset(testSet, select = c("LoanToValue", "Age", "Income",                         "LoanBalance", "InterestRate", "MortgageYears",                                    "PropertyValue", "AnnualPayment",  "CreditRating"));
-   
-    NNresults = compute(NNet , testSet_Features );
-    if(roundOff){
-                  NNresults$net.result = round(NNresults$net.result);
-                }
-   
-   finalOutput = data.frame(Actual = testSet$default,
+finalOutput = data.frame(Actual = testingset$Default,
                           Prediction = NNresults$net.result,
-                          Matches = doesPredictionMatch(testSet$default,                                            NNresults$net.result, outputClosenessThreshold));
-   row.names(finalOutput) = NULL;
-   
-   print(cat("Prediction Success Rate : ",                   countSuccessPercent(finalOutput$Matches)));
-  
-  return(finalOutput);
-}
-doesPredictionMatch = function( expected =NULL , predicted = NULL , threshold = 0.3){
-  if(is.null(expected) || is.null(predicted)){
+                          Matches = doesPredictionMatch( testingset$Default, NNresults$net.result, 0.3));
+
+row.names(finalOutput) = NULL;
+
+print(cat("Prediction Success Rate : ",countSuccessPercent(finalOutput$Matches)));
+
+print(finalOutput)
+```
+```{r}
+doesPredictionMatch = function(expected = Null, predicted = Null, threshold = 0.3){
+   if(is.null(expected) || is.null(predicted)){
     print("Necessary arguments missing or null");
     stop();
   }
@@ -104,7 +63,9 @@ doesPredictionMatch = function( expected =NULL , predicted = NULL , threshold = 
   }
   return (results);
 }
+```
 
+```{r}
 countSuccessPercent = function(input = NULL){
   count= 0;
   for(i in 1:length(input)){
@@ -116,4 +77,3 @@ countSuccessPercent = function(input = NULL){
   return ((count/length(input))*100);  
 }
 ```
-
