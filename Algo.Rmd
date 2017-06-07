@@ -32,6 +32,8 @@ plot(net)
 ```
 ```{r}
 testSet_Features = subset(testingset,select=c("Income", "MortgageType", "Age", "MortgageYears", "InterestRate", "LoanToValue", "CreditRating"));
+
+head(testSet_Features)
 ```
 
 ```{r}
@@ -80,3 +82,10 @@ countSuccessPercent = function(input = NULL){
   return ((count/length(input))*100);  
 }
 ```
+
+
+```{r}
+sol <- data.frame(actual = testingset$Default, prediction = NNresults$net.result)
+sol[]
+```
+
