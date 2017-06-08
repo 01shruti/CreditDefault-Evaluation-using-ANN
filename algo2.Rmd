@@ -4,22 +4,86 @@ output: html_notebook
 ---
 
 ```{r}
-install.packages("bnlearn")
-install.packages("foreach")
-install.packages("parallel")
-install.packages("doParallel")
+dataset = read.csv("creditset.csv");
+
+head(dataset)
 ```
 
 ```{r}
-library(bnlearn)
-library(foreach)
-library(parallel)
-library(doParallel)
+trainset = dataset[1:1200,]
+testset = dataset[1201:2000,]
+
+if(nrow(trainset) + nrow(testset) != nrow(dataset)){
+  print("Error occured while dividing dataset")
+  stop();
+}
+
+str(dataset)
+```
+```{r}
+library(neuralnet)
+
+model <- model.matrix(~default10yr + income + age + loan + LTI, data = trainset)
+head(model)
+```
+```{r}
+NNet = neuralnet(default10yr ~ age + LTI, model, hidden = 4, linear.output = F, lifesign = "minimal", threshold = 0.1)
+
+plot(NNet)
 ```
 
 ```{r}
-mydata <- read.csv("dataset.csv")
+testSet_Features = subset(testset,select=c("age", "LTI"));
 
-df <- mydata
+head(testSet_Features)
+
 ```
+```{r}
+NNresults = compute(NNet , testSet_Features );
+
+finalOutput = data.frame(Actual = testset$default10yr,
+                          Prediction = NNresults$net.result,
+                          Matches = doesPredictionMatch( testset$default10yr, NNresults$net.result, 0.3));
+
+row.names(finalOutput) = NULL;
+
+print(cat("Prediction Success Rate : ",countSuccessPercent(finalOutput$Matches)));
+
+print(finalOutput)
+```
+
+```{r}
+doesPredictionMatch = function(expected = Null, predicted = Null, threshold = 0.3){
+   if(is.null(expected) || is.null(predicted)){
+    print("Necessary arguments missing or null");
+    stop();
+  }
+  
+  results = rep(FALSE,length(expected));
+  
+  for(i in 1:length(expected)){
+    if((!is.na(expected[i]))&&(!is.na(predicted[i]))){  
+      if(abs(expected[i]-predicted[i])<threshold ){
+        results[i] = TRUE;
+      }
+    }
+      
+  }
+  return (results);
+}
+```
+
+```{r}
+countSuccessPercent = function(input = NULL){
+  count= 0;
+  for(i in 1:length(input)){
+    tmp =as.logical(input[i]); 
+    if(is.logical(tmp) && tmp ==TRUE ){
+      count=count+1;
+    }
+  }
+  return ((count/length(input))*100);  
+}
+```
+
 
