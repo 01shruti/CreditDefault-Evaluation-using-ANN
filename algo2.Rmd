@@ -87,3 +87,84 @@ countSuccessPercent = function(input = NULL){
 ```
 
 
+```{r}
+set.seed(500)
+#library(MASS)
+data <- read.csv("creditset.csv")
+  #Boston
+apply(data,2,function(x) sum(is.na(x)))
+```
+
+```{r}
+index <- sample(1:nrow(data), round(0.75 * nrow(data)))
+train <- data[index,]
+test <- data[-index,]
+#lm.fit <- glm(medv~.,data=train)
+lm.fit <- glm(default10yr~.,data=train)
+summary(lm.fit)
+pr.lm <- predict(lm.fit,test)
+MSE.lm <- sum((pr.lm - test$default10yr) ^2/nrow(test))
+```
+
+```{r}
+maxs <- apply(data,2,max)
+mins <- apply(data,2,min)
+
+scaled <- as.data.frame(scale(data, center = mins, scale = maxs-mins))
+
+train2 <- scaled[index,]
+test2 <- scaled[-index,]
+
+n<-names(train2)
+f <- as.formula(paste("default10yr~",paste(n[!n %in% "default10yr"],collapse = "+")))
+nn <- neuralnet(f, data=train2,hidden = c(4,3),linear.output = T)
+
+plot(nn)
+``` 
+```{r}
+tf = subset(test2,select=c("income", "age","loan", "LTI"));
+
+head(tf)
+```
+
+
+
+```{r}
+tf = subset(test2,select=c("income", "age","loan", "LTI"));
+print(tf)
+
+pr.nn <- compute(nn,tf)
+
+pr.nn_ <- pr.nn$net.result*(max(data$default10yr)-min(data$default10yr))+min(data$default10yr)
+test.r <- (test2$default10yr)*(max(data$default10yr)-min(data$default10yr))+min(data$default10yr)
+
+MSE.nn <- sum((test.r - pr.nn_)^2)/nrow(test2)
+
+print(paste(MSE.lm,MSE.nn))
+
+finalOutput = data.frame(Actual = test2$medv,
+                      Prediction = pr.nn$net.result,
+                Matches = doesPredictionMatch(test2$medv, pr.nn$net.result, 0.3));
+
+row.names(finalOutput) = NULL;
+
+print(cat("Prediction Success Rate : ",countSuccessPercent(finalOutput$Matches)));
+
+print(finalOutput)
+```
+
+```{r}
+par(mfrow=c(1,2))
+
+plot(test$medv,pr.nn_,col='red',main='Real vs predicted NN',pch=18,cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend='NN',pch=18,col='red', bty='n')
+
+plot(test$medv,pr.lm,col='blue',main='Real vs predicted lm',pch=18, cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend='LM',pch=18,col='blue', bty='n', cex=.95)
+```
+```{r}
+print(test2[,2:5])
+```
+
