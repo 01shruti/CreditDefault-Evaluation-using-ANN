@@ -37,8 +37,43 @@ test2 <- scaled[-index,]
 
 n<-names(train2)
 f <- as.formula(paste("Default~",paste(n[!n %in% "Default"],collapse = "+")))
-nn <- neuralnet(f, data=train2,hidden = c(4,3),linear.output = T)
+nn <- neuralnet(f, data=train2,hidden = 7,linear.output = F,stepmax = 1000000)
 
 plot(nn)
+```
+```{r}
+testSet_Features = subset(testset,select=c("Income", "Age","InterestType","MortgageType","CreditRating","InterestRate","LoanToValue"));
+
+head(testSet_Features)
+```
+
+```{r}
+NNresults = compute(nn,testSet_Features );
+
+pr.nn <- compute(nn,test2[,1:7])
+pr.nn_ <- pr.nn$net.result*(max(df$Default)-min(df$Default))+min(df$Default)
+test.r <- (test2$Default)*(max(df$Default)-min(df$Default))+min(df$Default)
+
+MSE.nn <- sum((test.r - pr.nn_)^2)/nrow(test2)
+
+print(paste(MSE.lm,MSE.nn))
+```
+
+```{r}
+par(mfrow=c(1,2))
+
+plot(test2$Default,pr.nn_,col='red',main='Real vs predicted NN',pch=18,cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend='NN',pch=18,col='red', bty='n')
+
+plot(test$Default,pr.lm,col='blue',main='Real vs predicted lm',pch=18, cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend='LM',pch=18,col='blue', bty='n', cex=.95)
+```
+```{r}
+plot(test$Default,pr.nn_,col='red',main='Real vs predicted NN',pch=18,cex=0.7)
+points(test$Default,pr.lm,col='blue',pch=18,cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend=c('NN','LM'),pch=18,col=c('red','blue'))
 ```
 
