@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+set.seed(1234)
+
+mydata <- read.csv("dataset.csv")
+apply(mydata,2,function(x) sum(is.na(x)))
+
+#str(mydata)
+
+df <- mydata[c(2,4:6,11:14)] 
+```
+```{r}
+index <- sample(1:nrow(df), round(0.7*nrow(df)))
+train <- df[index,]
+test <- df[-index,]
+#train <- mydata[1:2000,]
+#test <- mydata[2001:2500,]
+lm.fit <- glm(Default~.,data=train)
+summary(lm.fit)
+pr.lm <- predict(lm.fit,test)
+MSE.lm <- sum((pr.lm - test$Default) ^2/nrow(test))
+```
+```{r}
+
+```
+
