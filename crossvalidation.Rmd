@@ -1,0 +1,60 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(neuralnet)
+library(boot)
+set.seed(12345)
+
+df <- read.csv("dataset.csv")
+#apply(df,2,function(x) sum(is.na(x)))
+
+#str(df)
+
+mydata <- df[c(2,4:6,11:14)] 
+#apply(mydata,2,function(x) sum(is.na(x)))
+
+lm.fit <- glm(Default~.,data=mydata)
+cv.glm(mydata,lm.fit,K=10)$delta[1]
+```
+```{r}
+set.seed(450)
+
+cv.error <- NULL
+k <- 10
+ 
+library(plyr)
+
+pbar<-create_progress_bar('text')
+pbar$init(k)
+
+for(i in 1:k){
+    index <- sample(1:nrow(mydata),round(0.9*nrow(mydata)))
+    train.cv <- scaled[index,]
+    test.cv <- scaled[-index,]
+    
+    nn <- neuralnet(f,data=train.cv,hidden=c(5,2),linear.output=F,stepmax = 10000000)
+    
+    pr.nn <- compute(nn,mydata[,1:7])
+    pr.nn <- pr.nn$net.result*(max(mydata$Default)-min(mydata$Default))+min(mydata$Default)
+    
+    test.cv.r <- (df$Default)*(max(mydata$Default)-min(mydata$Default))+min(mydata$Default)
+    
+    cv.error[i] <- sum((test.cv.r - pr.nn)^2)/nrow(df)
+    
+    pbar$step()
+}
+
+
+```
+```{r}
+mean(cv.error)
+
+boxplot(cv.error,xlab='MSE CV',col='cyan',
+        border='blue',names='CV error (MSE)',
+        main='CV error (MSE) for NN',horizontal=TRUE)
+```
+
