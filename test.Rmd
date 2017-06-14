@@ -26,6 +26,19 @@ pr.lm <- predict(lm.fit,test)
 MSE.lm <- sum((pr.lm - test$Default) ^2/nrow(test))
 ```
 ```{r}
+library(neuralnet)
+maxs <- apply(df,2,max)
+mins <- apply(df,2,min)
 
+scaled <- as.data.frame(scale(df, center = mins, scale = maxs-mins))
+
+train2 <- scaled[index,]
+test2 <- scaled[-index,]
+
+n<-names(train2)
+f <- as.formula(paste("Default~",paste(n[!n %in% "Default"],collapse = "+")))
+nn <- neuralnet(f, data=train2,hidden = c(4,3),linear.output = T)
+
+plot(nn)
 ```
 
