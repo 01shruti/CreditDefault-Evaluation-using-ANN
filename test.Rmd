@@ -48,7 +48,47 @@ head(testSet_Features)
 ```
 
 ```{r}
+
 NNresults = compute(nn,testSet_Features );
+print(nrow(NNresults$net.result),nrow(test2$Default))
+finalOutput = data.frame(Actual = test2$Default,
+                          Prediction = NNresults$net.result,
+                          Matches = doesPredictionMatch(test2$Default, NNresults$net.result, 0.3));
+
+```
+```{r}
+doesPredictionMatch = function(expected = Null, predicted = Null, threshold = 0.3){
+   if(is.null(expected) || is.null(predicted)){
+    print("Necessary arguments missing or null");
+    stop();
+  }
+  
+  results = rep(FALSE,length(expected));
+  
+  for(i in 1:length(expected)){
+    if((!is.na(expected[i]))&&(!is.na(predicted[i]))){  
+      if(abs(expected[i]-predicted[i])<threshold ){
+        results[i] = TRUE;
+      }
+    }
+      
+  }
+  return (results);
+}
+countSuccessPercent = function(input = NULL){
+  count= 0;
+  for(i in 1:length(input)){
+    tmp =as.logical(input[i]); 
+    if(is.logical(tmp) && tmp ==TRUE ){
+      count=count+1;
+    }
+  }
+  return ((count/length(input))*100);  
+}
+```
+
+```{r}
+
 
 pr.nn <- compute(nn,test2[,1:7])
 pr.nn_ <- pr.nn$net.result*(max(df$Default)-min(df$Default))+min(df$Default)
