@@ -139,4 +139,18 @@ points(test2$loan_status,pr.lm,col='blue',pch=18,cex=0.7)
 abline(0,1,lwd=2)
 legend('bottomright',legend=c('NN','LM'),pch=18,col=c('red','blue'))
 ```
+```{r}
+library(ggplot2)
+par(mfrow=c(2,2))
+gwplot(nn,selected.covariate="loan_amnt",min=-2.5, max=5,col="blue")
+gwplot(nn,selected.covariate="funded_amnt",min=-2.5, max=5)
+gwplot(nn,selected.covariate="funded_amnt_inv",min=-2.5, max=5)
+gwplot(nn,selected.covariate="term",min=-2.5, max=5)
+gwplot(nn,selected.covariate="int_rate", min=-2.5, max=5)
+gwplot(nn,selected.covariate="installment", min=-2.5, max=5)
+gwplot(nn,selected.covariate="emp_length", min=-2.5, max=5)
+gwplot(nn,selected.covariate="annual_inc", min=-2.5, max=5)
+gwplot(nn,selected.covariate="application_type", min=-2.5, max=5)
+
+```
 
