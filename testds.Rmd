@@ -18,13 +18,124 @@ head(inputdf)
 ```
 
 ```{r}
+library(caret)
 index <- sample(1:nrow(inputdf), round(0.2*nrow(inputdf)))
 train <- inputdf[index,]
 test <- inputdf[-index,]
 
-lm.fit <- glm(loan_status~.,data=train)
+lm.fit <- glm(loan_status~.,data=train,family=binomial)
 summary(lm.fit)
-pr.lm <- predict(lm.fit,test)
-MSE.lm <- sum((pr.lm - test$loan_status) ^2/nrow(test))
+
+real.results <- subset(test,select = c(9))
+pr.lm <- predict(lm.fit,test,type = 'response')
+results <- ifelse(pr.lm >0.5,1,0)
+head(results)
+head(pr.lm)
+
+misclassificationerror <- mean(real.results != results)
+print(paste('Accuracy',1-misclassificationerror))
+
+confusionMatrix(data = results,reference = real.results$loan_status)
+#MSE.lm <- sum((pr.lm - test$loan_status) ^2/nrow(test))
+```
+```{r}
+library(neuralnet)
+maxs <- apply(inputdf,2,max)
+mins <- apply(inputdf,2,min)
+
+scaled <- as.data.frame(scale(inputdf, center = mins, scale = maxs-mins))
+
+train2 <- scaled[index,]
+test2 <- scaled[-index,]
+
+n<-names(train2)
+f <- as.formula(paste("loan_status~",paste(n[!n %in% "loan_status"],collapse = "+")))
+nn <- neuralnet(f, data=train2,hidden = 7,linear.output = F,stepmax = 1000000)
+
+plot(nn)
+```
+```{r}
+testSet_Features = subset(test2,select=c("loan_amnt", "funded_amnt", "funded_amnt_inv", "term", "int_rate", "installment", "emp_length", "annual_inc", "application_type"));
+
+head(testSet_Features)
+```
+
+```{r}
+NNresults = compute(nn,testSet_Features );
+#print(nrow(NNresults$net.result),nrow(test2$loan_status))
+finalOutput = data.frame(Actual = test2$loan_status,
+                          Prediction = NNresults$net.result,
+                          Matches = doesPredictionMatch(test2$loan_status, NNresults$net.result, 0.3));
+
+row.names(finalOutput) = NULL;
+
+print(cat("Prediction Success Rate : ",countSuccessPercent(finalOutput$Matches)));
+
+print(finalOutput)
+
+
+```
+
+```{r}
+doesPredictionMatch = function(expected = Null, predicted = Null, threshold = 0.3){
+   if(is.null(expected) || is.null(predicted)){
+    print("Necessary arguments missing or null");
+    stop();
+  }
+  
+  results = rep(FALSE,length(expected));
+  
+  for(i in 1:length(expected)){
+    if((!is.na(expected[i]))&&(!is.na(predicted[i]))){  
+      if(abs(expected[i]-predicted[i])<threshold ){
+        results[i] = TRUE;
+      }
+    }
+      
+  }
+  return (results);
+}
+countSuccessPercent = function(input = NULL){
+  count= 0;
+  for(i in 1:length(input)){
+    tmp =as.logical(input[i]); 
+    if(is.logical(tmp) && tmp ==TRUE ){
+      count=count+1;
+    }
+  }
+  return ((count/length(input))*100);  
+}
+
+```
+
+```{r}
+
+pr.nn_ <- NNresults$net.result*(max(inputdf$loan_status)-min(inputdf$loan_status))+min(inputdf$loan_status)
+test.r <- (test2$loan_status)*(max(inputdf$loan_status)-min(inputdf$loan_status))+min(inputdf$loan_status)
+
+MSE.nn <- sum((test.r - pr.nn_)^2)/nrow(test2)
+
+print(paste(MSE.lm,MSE.nn))
+
+```
+
+```{r}
+
+par(mfrow=c(1,2))
+
+plot(test2$loan_status,pr.nn_,col='red',main='Real vs predicted NN',pch=18,cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend='NN',pch=18,col='red', bty='n')
+
+plot(test$loan_status,pr.lm,col='blue',main='Real vs predicted lm',pch=18, cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend='LM',pch=18,col='blue', bty='n', cex=.95)
+
+
+
+plot(test$Default,pr.nn_,col='red',main='Real vs predicted NN',pch=18,cex=0.7)
+points(test$Default,pr.lm,col='blue',pch=18,cex=0.7)
+abline(0,1,lwd=2)
+legend('bottomright',legend=c('NN','LM'),pch=18,col=c('red','blue'))
 ```
 
