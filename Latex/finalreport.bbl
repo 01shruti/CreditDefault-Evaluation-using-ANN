@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+
+\bibitem{angelini2008neural}
+E.~Angelini, G.~di~Tollo, and A.~Roli.
+\newblock A neural network approach for credit risk evaluation.
+\newblock {\em The quarterly review of economics and finance}, 48(4):733--755,
+  2008.
+
+\bibitem{atiya2001bankruptcy}
+A.~F. Atiya.
+\newblock Bankruptcy prediction for credit risk using neural networks: A survey
+  and new results.
+\newblock {\em IEEE transactions on neural networks}, 12(4):929--935, 2001.
+
+\bibitem{eisenbeis1977pitfalls}
+R.~A. Eisenbeis.
+\newblock Pitfalls in the application of discriminant analysis in business,
+  finance, and economics.
+\newblock {\em The Journal of Finance}, 32(3):875--900, 1977.
+
+\bibitem{pacelli2011artificial}
+V.~Pacelli, M.~Azzollini, et~al.
+\newblock An artificial neural network approach for credit risk management.
+\newblock {\em Journal of Intelligent Learning Systems and Applications},
+  3(02):103, 2011.
+
+\bibitem{pang2002credit}
+S.-L. Pang, Y.-M. Wang, and Y.-H. Bai.
+\newblock Credit scoring model based on neural network.
+\newblock In {\em Machine Learning and Cybernetics, 2002. Proceedings. 2002
+  International Conference on}, volume~4, pages 1742--1746. IEEE, 2002.
+
+\end{thebibliography}

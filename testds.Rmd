@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+set.seed(12345)
+
+inputdata <- read.csv("ds.csv")
+#apply(inputdata,2,function(x) sum(is.na(x)))
+
+#str(inputdata)
+
+inputdf <- inputdata[c(3:8,11,13,16:17)]
+head(inputdf)
+
+```
+
+```{r}
+index <- sample(1:nrow(inputdf), round(0.2*nrow(inputdf)))
+train <- inputdf[index,]
+test <- inputdf[-index,]
+
+lm.fit <- glm(loan_status~.,data=train)
+summary(lm.fit)
+pr.lm <- predict(lm.fit,test)
+MSE.lm <- sum((pr.lm - test$loan_status) ^2/nrow(test))
+```
+
