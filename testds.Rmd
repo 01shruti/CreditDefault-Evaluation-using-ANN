@@ -36,9 +36,10 @@ misclassificationerror <- mean(real.results != results)
 print(paste('Accuracy',1-misclassificationerror))
 
 confusionMatrix(data = results,reference = real.results$loan_status)
-#MSE.lm <- sum((pr.lm - test$loan_status) ^2/nrow(test))
+MSE.lm <- sum((pr.lm - test$loan_status) ^2/nrow(test))
 ```
 ```{r}
+set.seed(456)
 library(neuralnet)
 maxs <- apply(inputdf,2,max)
 mins <- apply(inputdf,2,min)
@@ -133,8 +134,8 @@ legend('bottomright',legend='LM',pch=18,col='blue', bty='n', cex=.95)
 
 
 
-plot(test$Default,pr.nn_,col='red',main='Real vs predicted NN',pch=18,cex=0.7)
-points(test$Default,pr.lm,col='blue',pch=18,cex=0.7)
+plot(test$loan_status,pr.nn_,col='red',main='Real vs predicted NN',pch=18,cex=0.7)
+points(test2$loan_status,pr.lm,col='blue',pch=18,cex=0.7)
 abline(0,1,lwd=2)
 legend('bottomright',legend=c('NN','LM'),pch=18,col=c('red','blue'))
 ```
