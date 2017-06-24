@@ -1,0 +1,19 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+set.seed(2345)
+df <- read.csv("ds.csv")
+df2 <- inputdata[c(3:8,11,13,16:17)]
+
+library(corrplot)
+corrplot(cor(df2))
+
+library(corrgram)
+corrgram(df2, order=TRUE, lower.panel=panel.shade,
+  upper.panel=panel.pie, text.panel=panel.txt)
+```

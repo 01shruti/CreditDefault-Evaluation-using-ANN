@@ -32,7 +32,7 @@ The objective of this paper is to study the ability of neural network algorithms
 Discriminant analysis method has been the most common method to build credit default or credit score models. Although, this linear methodology has been criticized by the researchers because of its assumptions on the categorical data and unequal covariance matrices of good and bad customer loans.\\\\
 An artificial neural network is a nonlinear approach that provides a new alternative to linear methods, especially in the situations where the dataset possess complex relationships between the independence of the nonlinear variables \cite{atiya2001bankruptcy} \cite{pang2002credit}. Artificial neural network is a learning system that models a relationship between inputs and outputs, taking into account the relationship is nonlinear. They are also known as black box systems, in which extraction of information from internal system is impossible \cite{angelini2008neural}.\\\\
 Artificial Neural networks are machine learning system that simulates structure and function similar to a biological neuron. ANNs perform a task by changing its parameters, the same way a neuron changes its states to perform a cognitive task. A network is composed of a set of neurons structured in a specified topology. Neurons are connected by links with associated weights which determines information flow intensity; weights are the functions that represent behavior of the neural network.\\\\
-\begin{figure}
+\begin{figure}[!htb]
 \centering
 \begin{tikzpicture}[
 plain/.style={
@@ -78,7 +78,7 @@ net/.style={
 \label{fig:ANN1}
 \end{figure}
 As shown in figure \ref{fig:ANN1}, ANN has three layers, input layer, a hidden layer and output layer, input layer represents neurons receiving input stimulus. Then the information is transferred to next level of layer known as a hidden layer. Information is weighed before sending to next level of layers depending upon the size of the connections amongst neurons. Information is sized as per the processing unit or a transfer function represented in figure \ref{fig:ANN2}.\\
-\begin{figure}
+\begin{figure}[!htb]
 \centering
 \begin{tikzpicture}[
 init/.style={
@@ -151,8 +151,39 @@ For a neural network to work efficiently, weights should be tuned accurately. Th
 In supervised learning, a training set of correct examples is being used to train the network model. It consists of pairs of several inputs and expected outputs. Weights will be tuned based on the errors generated in the network. Most common example of supervised learning is classification, where the network has to learn to generalize relations between corresponding input and output variables. In this paper, we will be dealing with the typical classification problem to predict the credit default. 
 
 \section{Methodology}
+\subsection{Data}
+Data has been collected from kaggle.com (lending club loan data) that consists of more than 8.5 million records. A random sample data of 60,000 records has been extracted from the dataset and appropriate attribute selection has been done from 80 attributes. Attribute selection includes numeric and integer attributes along with some factor attributes relevant to the problem this paper is dealing with. Dataset consists of dependent and independent variables as follows: 
+\begin{enumerate}
+\item \textbf{Dependent Variable:} loan\_status(0 and 1); this paper aims to predict the creditworthiness of the borrower in near future. In this context, if the borrower will default then the investment will be bad and if the borrower will not default then he or she will be able to repay the full loan amount. So, to differentiate in neural network 0 indicates borrower will default and 1 indicates borrower will not default.
+\item \textbf{Independent Variable:} Following variables are considered as independent variable:
+\begin{enumerate}
+\item loan\_amnt: Amount of the loan that has been given to the borrower and in case of probationary loans, amount can be reduced in future
+\item funded\_amnt: Amount that has been asked by the borrower to loan at beginning
+\item funded\_amnt\_inv: Amount that has been committed by the investors
+\item term: Total period that has been agreed upon to repay the loan
+\item int\_rate: Interest rate on which loan has been given
+\item installment: Amount agreed to repay the loan monthly
+\item grade: Credit rating assigned to the loan application
+\item emp\_length: Total number of years the borrower has been employed
+\item annual\_inc: Annual income reported by the borrower while filing an application 
+\item issue\_d: Issued date of the loan application
+\item application\_type: Whether the application is individual or joint
+\end{enumerate} 
+\end{enumerate}
+
+\subsection{Model}
+In this study, a classic feed forward neural network has been used. The feedforward network consists of an input layer with 10 input variables, 7 hidden layer and an output layer with one neuron that represents a classifier. The network is trained by using a supervised learning algorithm(back propagation algorithm). The algorithm optimise the neuron weights be minimising the error between actual and desired output. Error is $error_{i}$ $= D_{i} - A_{i}$ for neuron $i$. Weights will be updated by formula $W_{i,k} = W_{i,k} + \phi I_{k}error_{i}g^{'}(in_{i})$, where $\phi$ be the learning coefficient and $I_{k}$ is the output from hidden layer. Algorithm will work until a stopping criteria is found.\\\\
+It is necessary to carefully choose the parameters, such as value of $\phi$ and number of neurons and number of hidden layers, for the neural network algorithm as shown in figure \ref{fig:nn}. Also, a random sample has been created from the extracted dataset for the network algorithm. Then a training and test dataset are created used to train the model and to validate the performance of the model respectively.\\\\ 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{nn.png}
+\caption{Neural network plot of the credit default model}
+\label{fig:nn}
+\end{figure}
+Also, to keep in mind that useless fields will be erased from the dataset, such that neural network will only work on numeric and integer variables. Next, data normalization is performed to feed the neural network with data that ranges in same interval. Min and max linear transformation function has been used to normalise the data before splitting the dataset into training and test datasets. 
+
+\section{Experiments and Results}
 \bibliographystyle{abbrv}
 \bibliography{biblio} 
-
 \end{document}
 
