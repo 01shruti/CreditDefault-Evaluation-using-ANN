@@ -16,8 +16,8 @@
 \date{}
 \maketitle
 \begin{abstract}
-  Artificial neural network is an information processing system which is influenced by human brain and works on the same principles of biological nervous system. They possess ability to extract meaning from complex and intricate data, by detecting trends and extracting patterns from it. This paper illustrates the ability of neural network model constructed to predict the creditworthiness of an application accurately and precisely with minimal false predictions and errors. The results are shown to be robust, validated by scaling the dataset and compared with logistic regression model. \\ \\
-  \textbf{Keywords:} Credit Risk, Artificial Neural Network, Prediction
+  Artificial neural network is an information processing system which is influenced by human brain and works on the same principles of biological nervous system. They possess ability to extract meaning from complex and intricate data, by detecting trends and extracting patterns from it. This paper illustrates the ability of neural network model and linear regression model constructed to predict the creditworthiness of an application accurately and precisely with minimal false predictions and errors. The results are shown to be similar for both the models, thus, models are efficient to use depending on the type of application and attributes. \\
+  \textbf{Keywords:} Credit Risk, Artificial Neural Network, Linear Regression
 \end{abstract}
 
 \section{Introduction}
@@ -26,7 +26,7 @@ Credit risk or credit default indicates the probability of non-repayment of bank
 The objective of credit risk models is to evaluate the risk portfolio of the borrower and then assign a probability of default. Therefore, there has been a discussion on classification and discrimination problems for solving credit risk models \cite{pacelli2011artificial}. \\\\
 Banks evaluate loan applications based on a subjective assessment made by the borrower. This assessment can lead to inefficient and inconsistent applications. Banks will be successful if they are able to reduce the credit risk and have a significant effect on economic growth of the country. In order to discriminate between good customers and bad customers, banks developed a need for a model-based approach that can predict credit default accurately. The model-based approach provides better credit default management and efficiently allocate capital \cite{angelini2008neural}. \\\\
 To predict the credit default, several methods have been created and proposed. The use of method depends on the complexity of banks and financial instituions, size and type of the loan. The commonly used method has been discrimination analysis. This method uses a score function that helps in decision making whereas some researchers have stated doubts on the validity of discriminates analysis because of its restrictive assumptions; normality and independence among variables \cite{eisenbeis1977pitfalls}. Artificial neural network models have created to overcome the shortcomings of other inefficient credit default models.\\\\
-The objective of this paper is to study the ability of neural network algorithms to tackle the problem of predicting credit default, that measures the creditworthiness of the loan application over a time period. Feed forward neural network algorithm is applied to a small dataset of residential mortgages applications of a bank to predict the credit default. The output of the model will generate a binary value that can be used as a classifier that will help banks to identify whether the borrower will default or not default. This paper will follow an empirical approach which will discuss two neural network based models and experimental results will be reported by training and validating the models on residential mortgage loan applications. As the final step in the direction, logistic regression method is also performed on the dataset. Results will provide a comparison between the efficiency and accuracy of the neural network and logistic regression methods. As the paper follows an empirical approach, this paper will show structured experimental approach to the design of models. 
+The objective of this paper is to study the ability of neural network algorithms to tackle the problem of predicting credit default, that measures the creditworthiness of the loan application over a time period. Feed forward neural network algorithm is applied to a small dataset of residential mortgages applications of a bank to predict the credit default. The output of the model will generate a binary value that can be used as a classifier that will help banks to identify whether the borrower will default or not default. This paper will follow an empirical approach which will discuss two neural network based models and experimental results will be reported by training and validating the models on residential mortgage loan applications. As the final step in the direction, linear regression method is also performed on the dataset. Results will provide a comparison between the efficiency and accuracy of the neural network and linear regression methods. As the paper follows an empirical approach, this paper will show structured experimental approach to the design of models. 
 
 \section{Artificial Neural Network}
 Discriminant analysis method has been the most common method to build credit default or credit score models. Although, this linear methodology has been criticized by the researchers because of its assumptions on the categorical data and unequal covariance matrices of good and bad customer loans.\\\\
@@ -190,7 +190,7 @@ There are $10$ normalized variables have been fed as the input to the network ar
 \caption{Correlation Plot of the input dataset}
 \label{fig:image1}
 \end{figure}\\\\
-Once the dataset was trained, it was tested on the test dataset. To compute the output based on the other inputs, \textbf{compute} function has been used. $7$ hidden layers were added to the network and model was created. Following result has been generated by the network:
+Once the dataset was trained, it was tested on the test dataset. To compute the output based on the other inputs, \textbf{compute} function has been used. $7$ hidden layers were added to the network and model was created. Following result matrix has been generated by the network:
 \begin{table} 
 \caption{Result matrix for classic feed forward neural network} % title of Table 
 \centering      % used for centering table 
@@ -207,26 +207,59 @@ Steps & 6765\\
 \label{table:params} 
 \end{table} \\\\
 Total $6765$ steps were needed until all derivatives of the error function  was smaller than default threshold($0.01$). After implementing classic feed forward algorithm, another model has been implemented by using back propagation algorithm with $0.01$ learning rate. Classic process and back propagation process have almost same error rate. Thus, classic model fit is less satisfied than back propagation algorithm.\\\\
-\begin{figure}
-    \centering
-    \begin{minipage}{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.1\textwidth]{image3.png} % first figure itself
-    \end{minipage}\hfill
-    \begin{minipage}{0.5\textwidth}
-        \centering
-        \includegraphics[width=1.1\textwidth]{image4.png} % second figure itself
-    \end{minipage}
-\caption{Generalised weights of the inputs}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.8\textwidth]{image3.png}
+\includegraphics[width=0.8\textwidth]{image4.png}
+\caption{Generalised weights of the input}
 \label{fig:gw}
 \end{figure}
-In figure \ref{fig:gw}, generalised weights of all the covariates are shown. Distribution has shown that all the attributes have non linear effect on loan\_status since all weights have generalised weight of greater than $1$. 
-
- 
-
-
-
-
+In figure \ref{fig:gw}, generalised weights of all the covariates are shown. Distribution has shown that all the attributes have non linear effect on loan\_status since all weights have generalised weight of greater than $1$. Figure \ref{table:result} shows the accuracy of the predicted values vs actual values and predicted values have been round off.\\\\
+\begin{table} 
+\caption{Comparison of predicted output and desired output} % title of Table 
+\centering      % used for centering table 
+\begin{tabular}{l|c|c}  % centered columns
+\hline                      %inserts double horizontal lines 
+{\bf Actual}&{\bf Prediction}&{\bf Matches}\\
+%heading 
+\hline                    % inserts single horizontal line 
+0 & 0.0032 & True\\
+0 & 0.00017 & True\\
+0 & 0.0114 & True\\
+1 & 0.985 & True\\
+0 & 0.0060 & True\\
+0 & 0.0132 & True\\
+0 & 0.9704 & False\\
+0 & 0.0101 & True\\
+1 & 0.00128 & True\\
+\hline     %inserts single line 
+\end{tabular} 
+\label{table:result} 
+\end{table}
+Last, linear regression \cite{laitinen1999predicting} have been applied to the dataset in order to compare the accuracy of both the algorithms. glm() function has been used to fit the linear regression model. For regression a probability greater than 0.5 has been assigned, if predicted values in regression is greater than $0.5$ then value is $1$ else $0$. Accuracy has been calculated by incorporating misclassification error and confusion matrix has also calculated as shown in figure \ref{fig:image5}.\\
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.8\textwidth]{image5.png}
+\caption{Confusion matrix and statistics of linear regression}
+\label{fig:image5}
+\end{figure}
+To highlight the comparison, mean square error of both linear regression and neural network has been calculated as shown in table \ref{table:mse}. As can be seen in the table mean square error of both the process are approximately same and thus both the process are doing same work. It is important to note that deviation in MSE depends on the training and test split.  
+\begin{table} 
+\caption{Mean Square error of both the processes} % title of Table 
+\centering      % used for centering table 
+\begin{tabular}{l|c}  % centered columns
+\hline                      %inserts double horizontal lines 
+{\bf MSE neural network}&{\bf MSE linear regression}\\
+%heading 
+\hline                    % inserts single horizontal line 
+0.0220449 & 0.0227334\\
+\hline     %inserts single line 
+\end{tabular} 
+\label{table:mse} 
+\end{table}
+\section{Conclusion and Future Work}
+This paper has studied artificial neural network and linear regression models to predict credit default. Both the system has been trained on the loan lending data provided by kaggle.com. Results of both the system has shown equal effect on the dataset and thus are very effective with accuracy of $\textbf{97.67575\%}$ by artificial neural network and $\textbf{97.69609\%}$. System classifies the output variable correctly with very low error. So, both process can be used to identify credit default with equal accuracy. Also, neural network represents a black box method such that it is difficult to explain the outcome compared to linear regression model. Therefore, which model to use depends on the application one has to use. Moreover, while fitting a model using neural network process user needs to take extra care of the attributes and data normalisation to improve the performance. To conclude, neural network provides strong evidences to efficiently predict the credit default for a loan application.\\\\
+Neural network algorithms have a wide range of applications that are not only essential for residential mortgages. Other applications can be rating bonds issued by companies commonly known as bond rating, rating short term investments that can last up to 1 year, long-term and short-term ratings of local and foreign currencies, sovereign, or country ratings. The prediction system can be further enhanced to assign a credit rating to an application by using appropriate algorithms and technologies.
 
 \bibliographystyle{abbrv}
 \bibliography{biblio} 

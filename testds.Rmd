@@ -56,6 +56,13 @@ nn <- neuralnet(f, data=train2,hidden = 7,linear.output = F,stepmax = 1000000)
 plot(nn)
 ```
 ```{r}
+nn.bp <- neuralnet(f,data = test2,hidden = 7,err.fct = "ce",linear.output = FALSE,algorithm = "backprop",learningrate = 0.01)
+
+plot(nn.bp)
+nn.bp$result.matrix
+```
+
+```{r}
 testSet_Features = subset(test2,select=c("loan_amnt", "funded_amnt", "funded_amnt_inv", "term", "int_rate", "installment", "emp_length", "annual_inc", "application_type"));
 
 head(testSet_Features)

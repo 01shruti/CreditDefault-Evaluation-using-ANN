@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{angelini2008neural}
 E.~Angelini, G.~di~Tollo, and A.~Roli.
@@ -32,6 +32,12 @@ R.~Hecht-Nielsen et~al.
 K.~Hornik, M.~Stinchcombe, and H.~White.
 \newblock Multilayer feedforward networks are universal approximators.
 \newblock {\em Neural networks}, 2(5):359--366, 1989.
+
+\bibitem{laitinen1999predicting}
+E.~K. Laitinen.
+\newblock Predicting a corporate credit analyst's risk estimate by logistic and
+  linear models.
+\newblock {\em International Review of Financial Analysis}, 8(2):97--121, 1999.
 
 \bibitem{pacelli2011artificial}
 V.~Pacelli, M.~Azzollini, et~al.
