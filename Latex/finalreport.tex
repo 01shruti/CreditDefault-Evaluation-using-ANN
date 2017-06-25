@@ -30,7 +30,7 @@ The objective of this paper is to study the ability of neural network algorithms
 
 \section{Artificial Neural Network}
 Discriminant analysis method has been the most common method to build credit default or credit score models. Although, this linear methodology has been criticized by the researchers because of its assumptions on the categorical data and unequal covariance matrices of good and bad customer loans.\\\\
-An artificial neural network is a nonlinear approach that provides a new alternative to linear methods, especially in the situations where the dataset possess complex relationships between the independence of the nonlinear variables \cite{atiya2001bankruptcy} \cite{pang2002credit}. Artificial neural network is a learning system that models a relationship between inputs and outputs, taking into account the relationship is nonlinear. They are also known as black box systems, in which extraction of information from internal system is impossible \cite{angelini2008neural}.\\\\
+An artificial neural network \cite{hornik1989multilayer}\cite{bebis1994feed} is a nonlinear approach that provides a new alternative to linear methods, especially in the situations where the dataset possess complex relationships between the independence of the nonlinear variables \cite{atiya2001bankruptcy} \cite{pang2002credit}. Artificial neural network is a learning system that models a relationship between inputs and outputs, taking into account the relationship is nonlinear. They are also known as black box systems, in which extraction of information from internal system is impossible \cite{angelini2008neural}.\\\\
 Artificial Neural networks are machine learning system that simulates structure and function similar to a biological neuron. ANNs perform a task by changing its parameters, the same way a neuron changes its states to perform a cognitive task. A network is composed of a set of neurons structured in a specified topology. Neurons are connected by links with associated weights which determines information flow intensity; weights are the functions that represent behavior of the neural network.\\\\
 \begin{figure}[!htb]
 \centering
@@ -172,8 +172,8 @@ Data has been collected from kaggle.com (lending club loan data) that consists o
 \end{enumerate}
 
 \subsection{Model}
-In this study, a classic feed forward neural network has been used. The feedforward network consists of an input layer with 10 input variables, 7 hidden layer and an output layer with one neuron that represents a classifier. The network is trained by using a supervised learning algorithm(back propagation algorithm). The algorithm optimise the neuron weights be minimising the error between actual and desired output. Error is $error_{i}$ $= D_{i} - A_{i}$ for neuron $i$. Weights will be updated by formula $W_{i,k} = W_{i,k} + \phi I_{k}error_{i}g^{'}(in_{i})$, where $\phi$ be the learning coefficient and $I_{k}$ is the output from hidden layer. Algorithm will work until a stopping criteria is found.\\\\
-It is necessary to carefully choose the parameters, such as value of $\phi$ and number of neurons and number of hidden layers, for the neural network algorithm as shown in figure \ref{fig:nn}. Also, a random sample has been created from the extracted dataset for the network algorithm. Then a training and test dataset are created used to train the model and to validate the performance of the model respectively.\\\\ 
+In this study, a classic feed forward neural network has been used. The feedforward network consists of an input layer with 10 input variables, 7 hidden layer and an output layer with one neuron that represents a classifier. The network is trained by using a supervised learning algorithm(back propagation algorithm \cite{hecht1988theory}\cite{pineda1987generalization}). The algorithm optimise the neuron weights be minimising the error between actual and desired output. Error is $error_{i}$ $= D_{i} - A_{i}$ for neuron $i$. Weights will be updated by formula $W_{i,k} = W_{i,k} + \phi I_{k}error_{i}g^{'}(in_{i})$, where $\phi$ be the learning coefficient and $I_{k}$ is the output from hidden layer. Algorithm will work until a stopping criteria is found.\\\\
+It is necessary to carefully choose the parameters, such as value of $\phi$ and number of neurons and number of hidden layers, for the neural network algorithm as shown in figure \ref{fig:nn}. In \ref{fig:nn} connections are represented by black lines between every layer and weights and blue line shows the bias(intercept of model) in every step. Network is black box and training algorithm is ready to use as it is converged.  Also, a random sample has been created from the extracted dataset for the network algorithm. Then a training and test dataset are created used to train the model and to validate the performance of the model respectively.\\\\ 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{nn.png}
@@ -183,6 +183,51 @@ It is necessary to carefully choose the parameters, such as value of $\phi$ and 
 Also, to keep in mind that useless fields will be erased from the dataset, such that neural network will only work on numeric and integer variables. Next, data normalization is performed to feed the neural network with data that ranges in same interval. Min and max linear transformation function has been used to normalise the data before splitting the dataset into training and test datasets. 
 
 \section{Experiments and Results}
+There are $10$ normalized variables have been fed as the input to the network arranged in an order. Output of the network is a classifier that results in $0$ and $1$. At first, data has been checked for missing datapoint value, no data was missing; there was no need to fix the dataset. Correlation matrix of the inputs have been shown in figure \ref{fig:image1}.
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{image2.png}
+\caption{Correlation Plot of the input dataset}
+\label{fig:image1}
+\end{figure}\\\\
+Once the dataset was trained, it was tested on the test dataset. To compute the output based on the other inputs, \textbf{compute} function has been used. $7$ hidden layers were added to the network and model was created. Following result has been generated by the network:
+\begin{table} 
+\caption{Result matrix for classic feed forward neural network} % title of Table 
+\centering      % used for centering table 
+\begin{tabular}{l|c}  % centered columns
+\hline                      %inserts double horizontal lines 
+{\bf Attribute}&{\bf Value}\\
+%heading 
+\hline                    % inserts single horizontal line 
+Error & 322.833\\
+Reached Threshold & 0.0998\\
+Steps & 6765\\
+\hline     %inserts single line 
+\end{tabular} 
+\label{table:params} 
+\end{table} \\\\
+Total $6765$ steps were needed until all derivatives of the error function  was smaller than default threshold($0.01$). After implementing classic feed forward algorithm, another model has been implemented by using back propagation algorithm with $0.01$ learning rate. Classic process and back propagation process have almost same error rate. Thus, classic model fit is less satisfied than back propagation algorithm.\\\\
+\begin{figure}
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.1\textwidth]{image3.png} % first figure itself
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.1\textwidth]{image4.png} % second figure itself
+    \end{minipage}
+\caption{Generalised weights of the inputs}
+\label{fig:gw}
+\end{figure}
+In figure \ref{fig:gw}, generalised weights of all the covariates are shown. Distribution has shown that all the attributes have non linear effect on loan\_status since all weights have generalised weight of greater than $1$. 
+
+ 
+
+
+
+
+
 \bibliographystyle{abbrv}
 \bibliography{biblio} 
 \end{document}

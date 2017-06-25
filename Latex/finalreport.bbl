@@ -12,11 +12,26 @@ A.~F. Atiya.
   and new results.
 \newblock {\em IEEE transactions on neural networks}, 12(4):929--935, 2001.
 
+\bibitem{bebis1994feed}
+G.~Bebis and M.~Georgiopoulos.
+\newblock Feed-forward neural networks.
+\newblock {\em IEEE Potentials}, 13(4):27--31, 1994.
+
 \bibitem{eisenbeis1977pitfalls}
 R.~A. Eisenbeis.
 \newblock Pitfalls in the application of discriminant analysis in business,
   finance, and economics.
 \newblock {\em The Journal of Finance}, 32(3):875--900, 1977.
+
+\bibitem{hecht1988theory}
+R.~Hecht-Nielsen et~al.
+\newblock Theory of the backpropagation neural network.
+\newblock {\em Neural Networks}, 1(Supplement-1):445--448, 1988.
+
+\bibitem{hornik1989multilayer}
+K.~Hornik, M.~Stinchcombe, and H.~White.
+\newblock Multilayer feedforward networks are universal approximators.
+\newblock {\em Neural networks}, 2(5):359--366, 1989.
 
 \bibitem{pacelli2011artificial}
 V.~Pacelli, M.~Azzollini, et~al.
@@ -29,5 +44,10 @@ S.-L. Pang, Y.-M. Wang, and Y.-H. Bai.
 \newblock Credit scoring model based on neural network.
 \newblock In {\em Machine Learning and Cybernetics, 2002. Proceedings. 2002
   International Conference on}, volume~4, pages 1742--1746. IEEE, 2002.
+
+\bibitem{pineda1987generalization}
+F.~J. Pineda.
+\newblock Generalization of back-propagation to recurrent neural networks.
+\newblock {\em Physical review letters}, 59(19):2229, 1987.
 
 \end{thebibliography}
