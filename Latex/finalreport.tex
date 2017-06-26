@@ -16,22 +16,22 @@
 \date{}
 \maketitle
 \begin{abstract}
-  Artificial neural network is an information processing system which is influenced by human brain and works on the same principles of biological nervous system. They possess ability to extract meaning from complex and intricate data, by detecting trends and extracting patterns from it. This paper illustrates the ability of neural network model and linear regression model constructed to predict the creditworthiness of an application accurately and precisely with minimal false predictions and errors. The results are shown to be similar for both the models, thus, models are efficient to use depending on the type of application and attributes. \\
+  Artificial neural network is an information processing system which is influenced by the human brain and works on the same principles of the biological nervous system. They possess the ability to extract meaning from complex and intricate data, by detecting trends and extracting patterns from it. This paper illustrates the ability of neural network model and linear regression model constructed to predict the creditworthiness of an application accurately and precisely with minimal false predictions and errors. The results are shown to be similar for both the models, thus, models are efficient to use depending on the type of application and attributes. \\
   \textbf{Keywords:} Credit Risk, Artificial Neural Network, Linear Regression
 \end{abstract}
 
 \section{Introduction}
 \label{intro}
-Credit risk or credit default indicates the probability of non-repayment of bank financial services that has been given to the customers. Credit risk has always been an extensively studied area in bank lending decisions. Credit risk plays a crucial role for banks and financial institutions, especially for commercial banks and it is always difficult to interpret and manage. Due to the advancements in technology, banks have managed to reduce the costs, in order to develop robust and sophisticated systems and models to predict and manage credit risk.
+Credit risk or credit default indicates the probability of non-repayment of bank financial services that have been given to the customers. Credit risk has always been an extensively studied area in bank lending decisions. Credit risk plays a crucial role for banks and financial institutions, especially for commercial banks and it is always difficult to interpret and manage. Due to the advancements in technology, banks have managed to reduce the costs, in order to develop robust and sophisticated systems and models to predict and manage credit risk.
 The objective of credit risk models is to evaluate the risk portfolio of the borrower and then assign a probability of default. Therefore, there has been a discussion on classification and discrimination problems for solving credit risk models \cite{pacelli2011artificial}. \\\\
 Banks evaluate loan applications based on a subjective assessment made by the borrower. This assessment can lead to inefficient and inconsistent applications. Banks will be successful if they are able to reduce the credit risk and have a significant effect on economic growth of the country. In order to discriminate between good customers and bad customers, banks developed a need for a model-based approach that can predict credit default accurately. The model-based approach provides better credit default management and efficiently allocate capital \cite{angelini2008neural}. \\\\
-To predict the credit default, several methods have been created and proposed. The use of method depends on the complexity of banks and financial instituions, size and type of the loan. The commonly used method has been discrimination analysis. This method uses a score function that helps in decision making whereas some researchers have stated doubts on the validity of discriminates analysis because of its restrictive assumptions; normality and independence among variables \cite{eisenbeis1977pitfalls}. Artificial neural network models have created to overcome the shortcomings of other inefficient credit default models.\\\\
+To predict the credit default, several methods have been created and proposed. The use of method depends on the complexity of banks and financial institutions, size and type of the loan. The commonly used method has been discrimination analysis. This method uses a score function that helps in decision making whereas some researchers have stated doubts on the validity of discriminates analysis because of its restrictive assumptions; normality and independence among variables \cite{eisenbeis1977pitfalls}. Artificial neural network models have created to overcome the shortcomings of other inefficient credit default models.\\\\
 The objective of this paper is to study the ability of neural network algorithms to tackle the problem of predicting credit default, that measures the creditworthiness of the loan application over a time period. Feed forward neural network algorithm is applied to a small dataset of residential mortgages applications of a bank to predict the credit default. The output of the model will generate a binary value that can be used as a classifier that will help banks to identify whether the borrower will default or not default. This paper will follow an empirical approach which will discuss two neural network based models and experimental results will be reported by training and validating the models on residential mortgage loan applications. As the final step in the direction, linear regression method is also performed on the dataset. Results will provide a comparison between the efficiency and accuracy of the neural network and linear regression methods. As the paper follows an empirical approach, this paper will show structured experimental approach to the design of models. 
 
 \section{Artificial Neural Network}
-Discriminant analysis method has been the most common method to build credit default or credit score models. Although, this linear methodology has been criticized by the researchers because of its assumptions on the categorical data and unequal covariance matrices of good and bad customer loans.\\\\
+Discriminant analysis method has been the most common method to build credit default or credit score models. Although, this linear methodology has been criticised by the researchers because of its assumptions on the categorical data and unequal covariance matrices of good and bad customer loans.\\\\
 An artificial neural network \cite{hornik1989multilayer}\cite{bebis1994feed} is a nonlinear approach that provides a new alternative to linear methods, especially in the situations where the dataset possess complex relationships between the independence of the nonlinear variables \cite{atiya2001bankruptcy} \cite{pang2002credit}. Artificial neural network is a learning system that models a relationship between inputs and outputs, taking into account the relationship is nonlinear. They are also known as black box systems, in which extraction of information from internal system is impossible \cite{angelini2008neural}.\\\\
-Artificial Neural networks are machine learning system that simulates structure and function similar to a biological neuron. ANNs perform a task by changing its parameters, the same way a neuron changes its states to perform a cognitive task. A network is composed of a set of neurons structured in a specified topology. Neurons are connected by links with associated weights which determines information flow intensity; weights are the functions that represent behavior of the neural network.\\\\
+Artificial Neural networks are machine learning system that simulates structure and function similar to a biological neuron. ANNs (Artificial Neural Networks) perform a task by changing its parameters, the same way a neuron changes its states to perform a cognitive task. A network is composed of a set of neurons structured in a specified topology. Neurons are connected by links with associated weights which determines information flow intensity; weights are the functions that represent behaviour of the neural network.\\\\
 \begin{figure}[!htb]
 \centering
 \begin{tikzpicture}[
@@ -77,7 +77,8 @@ net/.style={
 \caption{Basic Structure of Artificial Neural Network}
 \label{fig:ANN1}
 \end{figure}
-As shown in figure \ref{fig:ANN1}, ANN has three layers, input layer, a hidden layer and output layer, input layer represents neurons receiving input stimulus. Then the information is transferred to next level of layer known as a hidden layer. Information is weighed before sending to next level of layers depending upon the size of the connections amongst neurons. Information is sized as per the processing unit or a transfer function represented in figure \ref{fig:ANN2}.\\
+As shown in Fig.~\ref{fig:ANN1}, ANN has three layers, input layer, a hidden layer and output layer, input layer represents neurons receiving input stimulus. Then the information is transferred to next level of layer known as a hidden layer. Information is weighed before sending to next level of layers depending upon the size of the connections amongst neurons. Information is sized as per the processing unit or a transfer function represented in Fig.~\ref{fig:ANN2}. \\
+
 \begin{figure}[!htb]
 \centering
 \begin{tikzpicture}[
@@ -129,7 +130,7 @@ start chain=2,node distance=8mm
 \caption{Mathematical Equation of Artificial Neural Network}
 \label{fig:ANN2}
 \end{figure}
-Each neuron is characterized by a minimum value that activates a neuron(threshold value) and a transfer function. A Hidden layer can consist of several layers and performs the summation of input neurons and multiplies the weights with the summation to generate output neurons. Output generation is a two-step process: first, each input is multiplied by the weight on corresponding connection and then all valued are summed together; second, activation function is applied to summation of the inputs \cite{angelini2008neural}.\\
+Each neuron is characterised by a minimum value that activates a neuron(threshold value) and a transfer function. A Hidden layer can consist of several layers and performs the summation of input neurons and multiplies the weights with the summation to generate output neurons. Output generation is a two-step process: first, each input is multiplied by the weight on corresponding connection and then all valued are summed together; second, activation function is applied to summation of the inputs \cite{angelini2008neural}.\\
 \begin{equation}
 y_{i} = \sum_{j \in I} W_{j,i}a_{j}
 \label{eq:1}
@@ -148,21 +149,21 @@ For a neural network to work efficiently, weights should be tuned accurately. Th
 \item Reinforced Learning
 \end{enumerate}
 
-In supervised learning, a training set of correct examples is being used to train the network model. It consists of pairs of several inputs and expected outputs. Weights will be tuned based on the errors generated in the network. Most common example of supervised learning is classification, where the network has to learn to generalize relations between corresponding input and output variables. In this paper, we will be dealing with the typical classification problem to predict the credit default. 
+In supervised learning, a training set of correct examples is being used to train the network model. It consists of pairs of several inputs and expected outputs. Weights will be tuned based on the errors generated in the network. Most common example of supervised learning is classification, where the network has to learn to generalise relations between corresponding input and output variables. In this paper, we will be dealing with the typical classification problem to predict the credit default. 
 
 \section{Methodology}
 \subsection{Data}
-Data has been collected from kaggle.com (lending club loan data) that consists of more than 8.5 million records. A random sample data of 60,000 records has been extracted from the dataset and appropriate attribute selection has been done from 80 attributes. Attribute selection includes numeric and integer attributes along with some factor attributes relevant to the problem this paper is dealing with. Dataset consists of dependent and independent variables as follows: 
+Data has been collected from kaggle.com (lending club loan data) that consists of more than 8.5 million records. A random sample data of 60,000 records have been pulled out from the dataset and appropriate attribute selection has been done from 80 attributes. Attribute selection includes numeric and integer attributes along with some factor attribute relevant to the problem this paper is dealing with. Dataset consists of combination of variables as follows: 
 \begin{enumerate}
 \item \textbf{Dependent Variable:} loan\_status(0 and 1); this paper aims to predict the creditworthiness of the borrower in near future. In this context, if the borrower will default then the investment will be bad and if the borrower will not default then he or she will be able to repay the full loan amount. So, to differentiate in neural network 0 indicates borrower will default and 1 indicates borrower will not default.
-\item \textbf{Independent Variable:} Following variables are considered as independent variable:
+\item \textbf{Independent Variable:} Following variables are considered as an independent variable:
 \begin{enumerate}
 \item loan\_amnt: Amount of the loan that has been given to the borrower and in case of probationary loans, amount can be reduced in future
 \item funded\_amnt: Amount that has been asked by the borrower to loan at beginning
 \item funded\_amnt\_inv: Amount that has been committed by the investors
 \item term: Total period that has been agreed upon to repay the loan
 \item int\_rate: Interest rate on which loan has been given
-\item installment: Amount agreed to repay the loan monthly
+\item instalment: Amount agreed to repay the loan monthly
 \item grade: Credit rating assigned to the loan application
 \item emp\_length: Total number of years the borrower has been employed
 \item annual\_inc: Annual income reported by the borrower while filing an application 
@@ -172,18 +173,18 @@ Data has been collected from kaggle.com (lending club loan data) that consists o
 \end{enumerate}
 
 \subsection{Model}
-In this study, a classic feed forward neural network has been used. The feedforward network consists of an input layer with 10 input variables, 7 hidden layer and an output layer with one neuron that represents a classifier. The network is trained by using a supervised learning algorithm(back propagation algorithm \cite{hecht1988theory}\cite{pineda1987generalization}). The algorithm optimise the neuron weights be minimising the error between actual and desired output. Error is $error_{i}$ $= D_{i} - A_{i}$ for neuron $i$. Weights will be updated by formula $W_{i,k} = W_{i,k} + \phi I_{k}error_{i}g^{'}(in_{i})$, where $\phi$ be the learning coefficient and $I_{k}$ is the output from hidden layer. Algorithm will work until a stopping criteria is found.\\\\
-It is necessary to carefully choose the parameters, such as value of $\phi$ and number of neurons and number of hidden layers, for the neural network algorithm as shown in figure \ref{fig:nn}. In \ref{fig:nn} connections are represented by black lines between every layer and weights and blue line shows the bias(intercept of model) in every step. Network is black box and training algorithm is ready to use as it is converged.  Also, a random sample has been created from the extracted dataset for the network algorithm. Then a training and test dataset are created used to train the model and to validate the performance of the model respectively.\\\\ 
+In this study, a classic feed-forward neural network has been used. The feedforward network consists of an input layer with 10 input variables, 7 hidden layers and an output layer with one neuron that represents a classifier. The network is trained by using a supervised learning algorithm(back propagation algorithm \cite{hecht1988theory}\cite{pineda1987generalization}). The algorithm optimises the neuron weights be minimising the error between actual and desired output. Error is $error_{i}$ $= D_{i} - A_{i}$ for neuron $i$. Weights will be updated by formula $W_{i,k} = W_{i,k} + \phi I_{k}error_{i}g^{'}(in_{i})$, where $\phi$ be the learning coefficient and $I_{k}$ is the output from hidden layer. Algorithm will work until a stopping criterion is found.\\\\
+It is necessary to carefully choose the parameters, such as the value of $\phi$ and a number of neurons and number of hidden layers, for the neural network algorithm as shown in Fig.~\ref{fig:nn}. In \ref{fig:nn} connections are represented by black lines between every layer and weights and the blue line shows the bias(intercept of the model) in every step. The network is a black box and training algorithm is ready to use as it is converged.  Also, a random sample has been created from the extracted dataset for the network algorithm. Then a training and test dataset is created used to train the model and to validate the performance of the model respectively.\\\\ 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{nn.png}
 \caption{Neural network plot of the credit default model}
 \label{fig:nn}
 \end{figure}
-Also, to keep in mind that useless fields will be erased from the dataset, such that neural network will only work on numeric and integer variables. Next, data normalization is performed to feed the neural network with data that ranges in same interval. Min and max linear transformation function has been used to normalise the data before splitting the dataset into training and test datasets. 
+Also, to keep in mind that useless fields will be erased from the dataset, such that neural network will only work on numeric and integer variables. Next, data normalisation is performed to feed the neural network with data that range in the same interval. Min and max linear transformation function have been used to normalise the data before splitting the dataset into training and test datasets. 
 
 \section{Experiments and Results}
-There are $10$ normalized variables have been fed as the input to the network arranged in an order. Output of the network is a classifier that results in $0$ and $1$. At first, data has been checked for missing datapoint value, no data was missing; there was no need to fix the dataset. Correlation matrix of the inputs have been shown in figure \ref{fig:image1}.
+There are $10$ normalised variables have been fed as the input to the network arranged in an order. The output of the network is a classifier that results in $0$ and $1$. At first, data has been checked for missing datapoint value, no data was missing; there was no need to fix the dataset. Correlation matrix of the inputs have been shown in Fig.~ \ref{fig:image1}.
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{image2.png}
@@ -214,7 +215,7 @@ Total $6765$ steps were needed until all derivatives of the error function  was 
 \caption{Generalised weights of the input}
 \label{fig:gw}
 \end{figure}
-In figure \ref{fig:gw}, generalised weights of all the covariates are shown. Distribution has shown that all the attributes have non linear effect on loan\_status since all weights have generalised weight of greater than $1$. Figure \ref{table:result} shows the accuracy of the predicted values vs actual values and predicted values have been round off.\\\\
+In Fig.~\ref{fig:gw}, generalised weights of all the covariates are shown. Distribution has shown that all the attributes have a non linear effect on loan\_status since all weights have the generalised weight of greater than $1$. Table \ref{table:result} shows the accuracy of the predicted values vs actual values and predicted values have been round off.\\\\
 \begin{table} 
 \caption{Comparison of predicted output and desired output} % title of Table 
 \centering      % used for centering table 
@@ -236,15 +237,15 @@ In figure \ref{fig:gw}, generalised weights of all the covariates are shown. Dis
 \end{tabular} 
 \label{table:result} 
 \end{table}
-Last, linear regression \cite{laitinen1999predicting} have been applied to the dataset in order to compare the accuracy of both the algorithms. glm() function has been used to fit the linear regression model. For regression a probability greater than 0.5 has been assigned, if predicted values in regression is greater than $0.5$ then value is $1$ else $0$. Accuracy has been calculated by incorporating misclassification error and confusion matrix has also calculated as shown in figure \ref{fig:image5}.\\
+Last, linear regression \cite{laitinen1999predicting} have been applied to the dataset in order to compare the accuracy of both the algorithms. glm() function has been used to fit the linear regression model. For regression a probability greater than 0.5 has been assigned, if predicted values in the regression are greater than $0.5$, then the value is $1$ else $0$. Accuracy has been calculated by incorporating misclassification error and confusion matrix has also calculated as shown in Fig.~\ref{fig:image5}.\\\\
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.8\textwidth]{image5.png}
 \caption{Confusion matrix and statistics of linear regression}
 \label{fig:image5}
 \end{figure}
-To highlight the comparison, mean square error of both linear regression and neural network has been calculated as shown in table \ref{table:mse}. As can be seen in the table mean square error of both the process are approximately same and thus both the process are doing same work. It is important to note that deviation in MSE depends on the training and test split.  
-\begin{table} 
+To highlight the comparison, mean square error of both linear regression and the neural network has been calculated as shown in table \ref{table:mse}. As can be seen in the table mean square error of both the process is approximately same and thus both the process are doing same work. It is necessary to know that deviation in MSE depends on the training and test split.  
+\begin{table}[!htb] 
 \caption{Mean Square error of both the processes} % title of Table 
 \centering      % used for centering table 
 \begin{tabular}{l|c}  % centered columns
@@ -257,8 +258,9 @@ To highlight the comparison, mean square error of both linear regression and neu
 \end{tabular} 
 \label{table:mse} 
 \end{table}
+
 \section{Conclusion and Future Work}
-This paper has studied artificial neural network and linear regression models to predict credit default. Both the system has been trained on the loan lending data provided by kaggle.com. Results of both the system has shown equal effect on the dataset and thus are very effective with accuracy of $\textbf{97.67575\%}$ by artificial neural network and $\textbf{97.69609\%}$. System classifies the output variable correctly with very low error. So, both process can be used to identify credit default with equal accuracy. Also, neural network represents a black box method such that it is difficult to explain the outcome compared to linear regression model. Therefore, which model to use depends on the application one has to use. Moreover, while fitting a model using neural network process user needs to take extra care of the attributes and data normalisation to improve the performance. To conclude, neural network provides strong evidences to efficiently predict the credit default for a loan application.\\\\
+This paper has studied artificial neural network and linear regression models to predict credit default. Both the system has been trained on the loan lending data provided by kaggle.com. Results of both the system have shown an equal effect on the dataset and thus are very effective with the accuracy of $\textbf{97.67575\%}$ by artificial neural network and $\textbf{97.69609\%}$. The system classifies the output variable correctly with a very low error. So, both process can be used to identify credit default with equal accuracy. Also, the neural network represents a black box method such that it is difficult to explain the outcome compared to the linear regression model. Therefore, which model to use depends on the application one has to use. Moreover, while fitting a model using neural network process user needs to take extra care of the attributes and data normalisation to improve the performance. To conclude, neural network provides strong evidence to efficiently predict the credit default for a loan application.\\\\
 Neural network algorithms have a wide range of applications that are not only essential for residential mortgages. Other applications can be rating bonds issued by companies commonly known as bond rating, rating short term investments that can last up to 1 year, long-term and short-term ratings of local and foreign currencies, sovereign, or country ratings. The prediction system can be further enhanced to assign a credit rating to an application by using appropriate algorithms and technologies.
 
 \bibliographystyle{abbrv}

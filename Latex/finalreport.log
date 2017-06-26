@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210) (preloaded format=pdflatex 2017.2.3)  25 JUN 2017 21:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210) (preloaded format=pdflatex 2017.2.3)  26 JUN 2017 12:23
 entering extended mode
 **./finalreport.tex
 (finalreport.tex
@@ -552,133 +552,143 @@ Overfull \hbox (2.31595pt too wide) in paragraph at lines 76--77
  [][] 
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <24.88> on input line 104.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <20.74> on input line 104.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 104.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 106.
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--133
+Underfull \hbox (badness 10000) in paragraph at lines 32--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--133
+Underfull \hbox (badness 10000) in paragraph at lines 32--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--133
+Underfull \hbox (badness 10000) in paragraph at lines 32--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--133
+Underfull \hbox (badness 10000) in paragraph at lines 32--81
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 143--145
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <24.88> on input line 105.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.74> on input line 105.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 105.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 107.
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
 
  []
 
 [3] [4] <nn.png, id=29, 365.11406pt x 225.09094pt>
 File: nn.png Graphic file (type png)
  <use nn.png>
-Package pdftex.def Info: nn.png used on input line 179.
+Package pdftex.def Info: nn.png used on input line 180.
 (pdftex.def)             Requested size: 345.0pt x 212.70175pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--184
+Underfull \hbox (badness 10000) in paragraph at lines 176--185
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--184
+Underfull \hbox (badness 10000) in paragraph at lines 176--185
 
  []
 
 [5] <image2.png, id=36, 365.11406pt x 225.09094pt>
 File: image2.png Graphic file (type png)
  <use image2.png>
-Package pdftex.def Info: image2.png used on input line 189.
+Package pdftex.def Info: image2.png used on input line 190.
 (pdftex.def)             Requested size: 345.0pt x 212.70175pt.
 
 <image3.png, id=37, 365.11406pt x 225.09094pt>
 File: image3.png Graphic file (type png)
  <use image3.png>
-Package pdftex.def Info: image3.png used on input line 212.
+Package pdftex.def Info: image3.png used on input line 213.
 (pdftex.def)             Requested size: 276.00105pt x 170.1607pt.
 
 <image4.png, id=38, 365.11406pt x 225.09094pt>
 File: image4.png Graphic file (type png)
  <use image4.png>
-Package pdftex.def Info: image4.png used on input line 213.
+Package pdftex.def Info: image4.png used on input line 214.
 (pdftex.def)             Requested size: 276.00105pt x 170.1607pt.
 
 <image5.png, id=39, 312.41719pt x 122.70844pt>
 File: image5.png Graphic file (type png)
  <use image5.png>
-Package pdftex.def Info: image5.png used on input line 242.
+Package pdftex.def Info: image5.png used on input line 243.
 (pdftex.def)             Requested size: 276.00105pt x 108.4069pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--260
+Underfull \hbox (badness 10000) in paragraph at lines 187--261
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--260
+Underfull \hbox (badness 10000) in paragraph at lines 187--261
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--260
+Underfull \hbox (badness 10000) in paragraph at lines 187--261
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--260
+Underfull \hbox (badness 10000) in paragraph at lines 187--261
 
  []
 
-[6 <./nn.png>] [7 <./image2.png>] [8 <./image3.png> <./image4.png> <./image5.pn
-g>]
-Underfull \hbox (badness 10000) in paragraph at lines 261--263
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--261
 
  []
 
-(finalreport.bbl [9]) [10] (finalreport.aux) ) 
+[6 <./nn.png>] [7 <./image2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 263--265
+
+ []
+
+[8 <./image3.png> <./image4.png>] [9 <./image5.png>] (finalreport.bbl) [10]
+(finalreport.aux) ) 
 Here is how much of TeX's memory you used:
  13119 strings out of 493333
  281904 string characters out of 3129710
- 317184 words of memory out of 3000000
+ 311590 words of memory out of 3000000
  16404 multiletter control sequences out of 15000+200000
  12213 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,17n,70p,1109b,979s stack positions out of 5000i,500n,10000p,200000b,50000s
-<E:/Users/Shruti/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><E:/Users/Shruti/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/U
+<E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmbx10.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Users/Shruti/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><E:/Users/Shruti/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/U
 sers/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-bx9.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmex10.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb><E:/Users/Shruti/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><E:/Users/Shruti/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><E:/Users/Shruti
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:
-/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmr12.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr17.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr7.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><E:/Users/Shruti/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><E:/Users/Shruti/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><E:/U
-sers/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmti10.pfb>
-Output written on finalreport.pdf (10 pages, 260393 bytes).
+mi10.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi12.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb><E:/Users/Shruti/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/Users/Shruti/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:/Users/Shruti/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><E:/
+Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mr7.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr9.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb><E:/Users/Shruti/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><E:/Users/Shruti/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/Users/Shruti/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on finalreport.pdf (10 pages, 260598 bytes).
 PDF statistics:
  107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
